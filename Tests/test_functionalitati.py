@@ -1,11 +1,11 @@
 from Logic.functionalitati import *
 from Logic.CRUD import get_by_id
-from Domain.cheltuiala import creeaza_cheltuiala
+from Domain.cheltuiala import *
 
 
 lista_default = [
     creeaza_cheltuiala(22, 145, "25.06.2021", "alte_cheltuieli", 1),
-    creeaza_cheltuiala(12, 348, "18.03.2020", "canal", 2),
+    creeaza_cheltuiala(12, 348, "25.06.2021", "canal", 2),
     creeaza_cheltuiala(22, 165, "20.01.2019", "întreținere", 3),
 ]
 
@@ -26,5 +26,15 @@ def test_stergere_cheltuieli():
     assert get_by_id(2, lista) is None
 
 
+def test_adauga_valoare_la_cheltuieli():
+    lista = lista_default
+    lista = adauga_valoare_la_cheltuieli("25.06.2021", 10, lista)
+    assert len(lista) == 3
+    assert get_suma(lista[0]) == 155
+    assert get_suma(lista[1]) == 358
+    assert get_suma(lista[2]) == 165
+
+
 def test_functionalitati():
     test_stergere_cheltuieli()
+    test_adauga_valoare_la_cheltuieli()

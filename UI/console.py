@@ -42,8 +42,15 @@ def ui_modificare_cheltuiala(lista):
 
 
 def ui_stergere_cheltuieli(lista):
-    nr_apartament = int(input("Introduceti nr apartamentului: "))
+    nr_apartament = int(input("Introduceti nr apartament: "))
     lista = stergere_cheltuieli(nr_apartament, lista)
+    return lista
+
+
+def ui_adauga_valoare_la_cheltuieli(lista):
+    data = input("Introduceti data: ")
+    suma = float(input("Introduceti suma: "))
+    lista = adauga_valoare_la_cheltuieli(data, suma, lista)
     return lista
 
 
@@ -57,6 +64,7 @@ x. Iesire
 2. Stergere cheltuiala
 3. Modificare cheltuiala
 4. Stergere toate cheltuielile pt un anumit apartament
+5. Adunarea unei valori la toate cheltuielile dintr-o anumita data
     """
     print(usage)
 
@@ -83,6 +91,8 @@ def run_menu(lista):
             lista = ui_modificare_cheltuiala(lista)
         elif optiune == "4":
             lista = ui_stergere_cheltuieli(lista)
+        elif optiune == "5":
+            lista = ui_adauga_valoare_la_cheltuieli(lista)
 
         else:
             print("Optiune inexistenta!")
