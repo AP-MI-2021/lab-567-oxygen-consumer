@@ -1,8 +1,4 @@
-from uuid import uuid4
-
-
-def creeaza_cheltuiala(nr_apartament: int, suma: int, data: str, tip: str,
-                       id = uuid4()):
+def creeaza_cheltuiala(nr_apartament: int, suma: int, data: str, tip: str, id: int):
     """
     Returneaza un dictionar ce defineste o cheltuiala.
 
@@ -18,7 +14,7 @@ def creeaza_cheltuiala(nr_apartament: int, suma: int, data: str, tip: str,
         "suma": suma,
         "data": data,
         "tip": tip,
-        "id": id
+        "id": id,
     }
 
 
@@ -36,6 +32,7 @@ def get_data(cheltuiala):
 
 def get_tip(cheltuiala):
     return cheltuiala["tip"]
+
 
 def get_id(cheltuiala):
     return cheltuiala["id"]
