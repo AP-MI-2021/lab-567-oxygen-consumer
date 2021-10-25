@@ -7,6 +7,7 @@ def creeaza_cheltuiala(nr_apartament: int, suma: int, data: str, tip: str, id: i
     - suma: suma cheltuielii
     - data: data in care s-a inregistrat cheltuiala
     - tipul: tipul cheltuielii (întreținere, canal sau alte cheltuieli)
+    - id: id-ul cheltuielii
     """
 
     return {
