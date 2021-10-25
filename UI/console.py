@@ -1,5 +1,6 @@
 from Logic.CRUD import *
 from Domain.cheltuiala import creeaza_cheltuiala
+from Logic.functionalitati import *
 
 
 def ui_adaugare_cheltuiala(lista):
@@ -40,6 +41,12 @@ def ui_modificare_cheltuiala(lista):
     return lista
 
 
+def ui_stergere_cheltuieli(lista):
+    nr_apartament = int(input("Introduceti nr apartamentului: "))
+    lista = stergere_cheltuieli(nr_apartament, lista)
+    return lista
+
+
 def print_usage():
     usage = """
 a. Afisare lista cheltuieli
@@ -49,6 +56,7 @@ x. Iesire
 1. Adaugare cheltuiala
 2. Stergere cheltuiala
 3. Modificare cheltuiala
+4. Stergere toate cheltuielile pt un anumit apartament
     """
     print(usage)
 
@@ -73,6 +81,8 @@ def run_menu(lista):
             lista = ui_stergere_cheltuiala(lista)
         elif optiune == "3":
             lista = ui_modificare_cheltuiala(lista)
+        elif optiune == "4":
+            lista = ui_stergere_cheltuieli(lista)
 
         else:
             print("Optiune inexistenta!")
