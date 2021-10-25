@@ -1,4 +1,4 @@
-def creeaza_cheltuiala(nr_apartament: int, suma: int, data: str, tip: str, id: int):
+def creeaza_cheltuiala(nr_apartament: int, suma: float, data: str, tip: str, id):
     """
     Returneaza un dictionar ce defineste o cheltuiala.
 
