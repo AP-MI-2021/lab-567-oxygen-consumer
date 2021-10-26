@@ -37,3 +37,9 @@ def get_tip(cheltuiala):
 
 def get_id(cheltuiala):
     return cheltuiala[4]
+
+
+def to_string(cheltuiala):
+    print(
+        f"id: {get_id(cheltuiala)}, suma: {get_suma(cheltuiala)}, data: {get_data(cheltuiala)}, tip: {get_tip(cheltuiala)}"
+    )

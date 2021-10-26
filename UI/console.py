@@ -1,5 +1,5 @@
 from Logic.CRUD import *
-from Domain.cheltuiala import creeaza_cheltuiala
+from Domain.cheltuiala import creeaza_cheltuiala, to_string
 from Logic.functionalitati import *
 
 
@@ -79,7 +79,7 @@ def run_menu(lista):
             break
         elif optiune == "a":
             for cheltuiala in lista:
-                print(cheltuiala)
+                print(to_string(cheltuiala))
         elif optiune == "m":
             print_usage()
 
