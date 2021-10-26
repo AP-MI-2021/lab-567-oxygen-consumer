@@ -10,30 +10,30 @@ def creeaza_cheltuiala(nr_apartament: int, suma: float, data: str, tip: str, id)
     - id: id-ul cheltuielii
     """
 
-    return {
-        "nr_apartament": nr_apartament,
-        "suma": suma,
-        "data": data,
-        "tip": tip,
-        "id": id,
-    }
+    return [
+        nr_apartament,
+        suma,
+        data,
+        tip,
+        id,
+    ]
 
 
 def get_nr_aparament(cheltuiala):
-    return cheltuiala["nr_apartament"]
+    return cheltuiala[0]
 
 
 def get_suma(cheltuiala):
-    return cheltuiala["suma"]
+    return cheltuiala[1]
 
 
 def get_data(cheltuiala):
-    return cheltuiala["data"]
+    return cheltuiala[2]
 
 
 def get_tip(cheltuiala):
-    return cheltuiala["tip"]
+    return cheltuiala[3]
 
 
 def get_id(cheltuiala):
-    return cheltuiala["id"]
+    return cheltuiala[4]
