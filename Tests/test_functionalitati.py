@@ -4,7 +4,7 @@ from Domain.cheltuiala import *
 
 
 lista_default = [
-    creeaza_cheltuiala(22, 145, "25.06.2021", "alte_cheltuieli", 1),
+    creeaza_cheltuiala(22, 145, "25.06.2021", "alte cheltuieli", 1),
     creeaza_cheltuiala(12, 348, "25.06.2021", "canal", 2),
     creeaza_cheltuiala(22, 165, "20.01.2019", "întreținere", 3),
 ]

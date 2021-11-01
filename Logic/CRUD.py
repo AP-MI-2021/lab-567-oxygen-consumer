@@ -5,6 +5,8 @@ def adaugare_cheltuiala(cheltuiala, lista):
     """
     Adauga o cheltuiala la lista de cheltuieli si returneaza noua lista.
     """
+    if get_by_id(get_id(cheltuiala), lista) is not None:
+        raise ValueError("Id-ul exista deja!")
     return lista + [cheltuiala]
 
 

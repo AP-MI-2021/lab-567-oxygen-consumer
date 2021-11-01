@@ -16,6 +16,9 @@ def adauga_valoare_la_cheltuieli(data, suma, lista):
     """
     Adauga o valoare la toate cheltuielile dintr-o anumita data.
     """
+
+    data = str_to_date(data)
+
     for cheltuiala in lista:
         if get_data(cheltuiala) == data:
             lista = modificare_cheltuiala(

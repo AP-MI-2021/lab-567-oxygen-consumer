@@ -5,18 +5,18 @@ from Logic.functionalitati import *
 
 def ui_adaugare_cheltuiala(lista):
     id = input("Introduceti id: ")
-    while get_by_id(id, lista) is not None:
-        print("Id deja existent!")
-        id = input("Introduceti id: ")
 
-    nr_apartament = int(input("Introduceti nr apartamentului: "))
-    suma = float(input("Introduceti suma: "))
-    data = input("Intrdouceti data: ")
-    tip = input("Introduceti tipul cheltuielii: ")
+    try:
+        nr_apartament = int(input("Introduceti nr apartamentului: "))
+        suma = float(input("Introduceti suma: "))
+        data = input("Intrdouceti data: ")
+        tip = input("Introduceti tipul cheltuielii: ")
+        lista = adaugare_cheltuiala(
+            creeaza_cheltuiala(nr_apartament, suma, data, tip, id), lista
+        )
+    except ValueError as error:
+        print(f"Eroare: {error}")
 
-    lista = adaugare_cheltuiala(
-        creeaza_cheltuiala(nr_apartament, suma, data, tip, id), lista
-    )
     return lista
 
 
@@ -28,29 +28,35 @@ def ui_stergere_cheltuiala(lista):
 
 def ui_modificare_cheltuiala(lista):
     id = input("Introduceti id-ul cheltuielii: ")
-    if get_by_id(id, lista) is None:
-        print("Id inexistent!")
-        return lista
 
-    nr_apartament = int(input("Introduceti nr apartament: "))
-    suma = float(input("Intoduceti suma: "))
-    data = input("Introduceti data: ")
-    tip = input("Introduceti tipul cheltuielii: ")
+    try:
+        nr_apartament = int(input("Introduceti nr apartament: "))
+        suma = float(input("Intoduceti suma: "))
+        data = input("Introduceti data: ")
+        tip = input("Introduceti tipul cheltuielii: ")
 
-    lista = modificare_cheltuiala(id, nr_apartament, suma, data, tip, lista)
+        lista = modificare_cheltuiala(id, nr_apartament, suma, data, tip, lista)
+    except ValueError as error:
+        print(f"Eroare: {error}")
     return lista
 
 
 def ui_stergere_cheltuieli(lista):
-    nr_apartament = int(input("Introduceti nr apartament: "))
-    lista = stergere_cheltuieli(nr_apartament, lista)
+    try:
+        nr_apartament = int(input("Introduceti nr apartament: "))
+        lista = stergere_cheltuieli(nr_apartament, lista)
+    except ValueError as error:
+        print(f"Eroare: {error}")
     return lista
 
 
 def ui_adauga_valoare_la_cheltuieli(lista):
-    data = input("Introduceti data: ")
-    suma = float(input("Introduceti suma: "))
-    lista = adauga_valoare_la_cheltuieli(data, suma, lista)
+    try:
+        data = input("Introduceti data: ")
+        suma = float(input("Introduceti suma: "))
+        lista = adauga_valoare_la_cheltuieli(data, suma, lista)
+    except ValueError as error:
+        print(f"Eroare: {error}")
     return lista
 
 
