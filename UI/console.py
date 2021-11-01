@@ -60,6 +60,15 @@ def ui_adauga_valoare_la_cheltuieli(lista):
     return lista
 
 
+def ui_cea_mai_mare_cheltuiala(lista):
+    for tip in tipuri_permise:
+        print(tip + ":")
+        try:
+            print("" + to_string(cea_mai_mare_cheltuiala(tip, lista)))
+        except:
+            print("Nu exista")
+
+
 def print_usage():
     usage = """
 a. Afisare lista cheltuieli
@@ -72,6 +81,7 @@ x. Iesire
 3. Modificare cheltuiala
 4. Stergere toate cheltuielile pt un anumit apartament
 5. Adunarea unei valori la toate cheltuielile dintr-o anumita data
+6. Determina cheltuielile de suma maxima pt fiecare tip de cheltuiala
     """
     print(usage)
 
@@ -113,6 +123,8 @@ def run_menu(lista):
         elif optiune == "5":
             liste_anterioare.append(lista)
             lista = ui_adauga_valoare_la_cheltuieli(lista)
+        elif optiune == "6":
+            ui_cea_mai_mare_cheltuiala(lista)
 
         else:
             print("Optiune inexistenta!")

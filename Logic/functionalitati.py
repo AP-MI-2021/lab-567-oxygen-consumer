@@ -30,3 +30,19 @@ def adauga_valoare_la_cheltuieli(data, suma, lista):
                 lista,
             )
     return lista
+
+
+def cea_mai_mare_cheltuiala(tip, lista):
+    """
+    Determina cheltuiala cu suma cea mai mare de un anumit tip din lista.
+    """
+
+    cheltuiala_max = None
+
+    for cheltuiala in lista:
+        if get_tip(cheltuiala) == tip and (
+            cheltuiala_max is None or get_suma(cheltuiala) > get_suma(cheltuiala_max)
+        ):
+            cheltuiala_max = cheltuiala
+
+    return cheltuiala_max
