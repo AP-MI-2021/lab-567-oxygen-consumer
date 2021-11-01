@@ -64,6 +64,7 @@ def print_usage():
     usage = """
 a. Afisare lista cheltuieli
 m. Afisare meniu
+u. Undo
 x. Iesire
 
 1. Adaugare cheltuiala
@@ -77,6 +78,7 @@ x. Iesire
 
 def run_menu(lista):
     print_usage()
+    liste_anterioare = []
 
     while True:
         optiune = input("Introduceti optiunea: ")
@@ -84,20 +86,32 @@ def run_menu(lista):
         if optiune == "x":
             break
         elif optiune == "a":
+            # FIXME apare un None la capatul listei, nuj dc
             for cheltuiala in lista:
                 print(to_string(cheltuiala))
         elif optiune == "m":
             print_usage()
+        elif optiune == "u":
+            try:
+                lista = liste_anterioare[-1]
+                liste_anterioare.pop()
+            except IndexError:
+                print("Eroare: nu mai puteti da undo")
 
         elif optiune == "1":
+            liste_anterioare.append(lista)
             lista = ui_adaugare_cheltuiala(lista)
         elif optiune == "2":
+            liste_anterioare.append(lista)
             lista = ui_stergere_cheltuiala(lista)
         elif optiune == "3":
+            liste_anterioare.append(lista)
             lista = ui_modificare_cheltuiala(lista)
         elif optiune == "4":
+            liste_anterioare.append(lista)
             lista = ui_stergere_cheltuieli(lista)
         elif optiune == "5":
+            liste_anterioare.append(lista)
             lista = ui_adauga_valoare_la_cheltuieli(lista)
 
         else:
