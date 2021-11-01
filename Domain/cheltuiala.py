@@ -52,9 +52,7 @@ def get_id(cheltuiala):
 
 
 def to_string(cheltuiala):
-    print(
-        f"id: {get_id(cheltuiala)}, suma: {get_suma(cheltuiala)}, data: {get_data(cheltuiala).strftime('%d.%m.%Y')}, tip: {get_tip(cheltuiala)}"
-    )
+    return f"id: {get_id(cheltuiala)}, suma: {get_suma(cheltuiala)}, data: {get_data(cheltuiala).strftime('%d.%m.%Y')}, tip: {get_tip(cheltuiala)}"
 
 
 def str_to_date(data):

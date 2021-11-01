@@ -102,7 +102,6 @@ def run_menu(lista):
         if optiune == "x":
             break
         elif optiune == "a":
-            # FIXME apare un None la capatul listei, nuj dc
             for cheltuiala in lista:
                 print(to_string(cheltuiala))
         elif optiune == "m":
