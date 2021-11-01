@@ -46,3 +46,11 @@ def cea_mai_mare_cheltuiala(tip, lista):
             cheltuiala_max = cheltuiala
 
     return cheltuiala_max
+
+
+def ordonare_descrescatoare(lista):
+    """
+    Ordoneaza cheltuielile in ordine descrescatoare dupa suma.
+    """
+    lista.sort(reverse=True, key=lambda cheltuiala: get_suma(cheltuiala))
+    return lista

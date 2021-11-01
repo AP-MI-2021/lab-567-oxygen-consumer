@@ -64,9 +64,14 @@ def ui_cea_mai_mare_cheltuiala(lista):
     for tip in tipuri_permise:
         print(tip + ":")
         try:
-            print("" + to_string(cea_mai_mare_cheltuiala(tip, lista)))
+            print(to_string(cea_mai_mare_cheltuiala(tip, lista)))
         except:
             print("Nu exista")
+
+
+def ui_ordonare_descrescatoare(lista):
+    lista = ordonare_descrescatoare(lista)
+    return lista
 
 
 def print_usage():
@@ -82,6 +87,7 @@ x. Iesire
 4. Stergere toate cheltuielile pt un anumit apartament
 5. Adunarea unei valori la toate cheltuielile dintr-o anumita data
 6. Determina cheltuielile de suma maxima pt fiecare tip de cheltuiala
+7. Ordoneaza descrescator cheltuielile in functie de suma
     """
     print(usage)
 
@@ -125,6 +131,9 @@ def run_menu(lista):
             lista = ui_adauga_valoare_la_cheltuieli(lista)
         elif optiune == "6":
             ui_cea_mai_mare_cheltuiala(lista)
+        elif optiune == "7":
+            liste_anterioare.append(lista)
+            ui_ordonare_descrescatoare(lista)
 
         else:
             print("Optiune inexistenta!")

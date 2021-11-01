@@ -45,7 +45,16 @@ def test_cea_mai_mare_cheltuiala():
     assert cea_mai_mare_cheltuiala("emacs > vim", lista) is None
 
 
+def test_ordonare_descrescatoare():
+    lista = lista_default
+    lista = ordonare_descrescatoare(lista)
+    assert len(lista) == 4
+    assert get_suma(lista[0]) == 348
+    assert get_suma(lista[-1]) == 145
+
+
 def test_functionalitati():
     test_stergere_cheltuieli()
     test_adauga_valoare_la_cheltuieli()
     test_cea_mai_mare_cheltuiala()
+    test_ordonare_descrescatoare()
