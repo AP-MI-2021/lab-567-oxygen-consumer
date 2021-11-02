@@ -10,7 +10,10 @@ def run_add(params, lista):
         pass
 
     lista = adaugare_cheltuiala(
-        creeaza_cheltuiala(params[1], params[2], params[3], param_4, params[0]), lista
+        creeaza_cheltuiala(
+            int(params[1]), float(params[2]), params[3], param_4, params[0]
+        ),
+        lista,
     )
     return lista
 
@@ -28,7 +31,7 @@ def run_update(params, lista):
         pass
 
     lista = modificare_cheltuiala(
-        params[0], params[1], params[2], params[3], param_4, lista
+        params[0], int(params[1]), float(params[2]), params[3], param_4, lista
     )
     return lista
 
