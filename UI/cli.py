@@ -53,28 +53,32 @@ Iesire: exit
 
 def run_cli(lista):
     print_usage()
+    should_run = True
 
-    while True:
-        optiune = input("$ ")
+    while should_run:
+        optiuni = input("$ ")
+        optiuni = optiuni.split(";")
 
         try:
-            optiune = optiune.split()
+            for optiune in optiuni:
+                optiune = optiune.split()
 
-            if optiune[0] == "exit":
-                break
-            elif optiune[0] == "help":
-                print_usage()
-            elif optiune[0] == "showall":
-                show_all(lista)
+                if optiune[0] == "exit":
+                    should_run = False
+                    break
+                elif optiune[0] == "help":
+                    print_usage()
+                elif optiune[0] == "showall":
+                    show_all(lista)
 
-            elif optiune[0] == "add":
-                lista = run_add(optiune[1:], lista)
-            elif optiune[0] == "delete":
-                lista = run_delete(optiune[1], lista)
-            elif optiune[0] == "update":
-                lista = run_update(optiune[1:], lista)
+                elif optiune[0] == "add":
+                    lista = run_add(optiune[1:], lista)
+                elif optiune[0] == "delete":
+                    lista = run_delete(optiune[1], lista)
+                elif optiune[0] == "update":
+                    lista = run_update(optiune[1:], lista)
 
-            else:
-                print("Optiune inexistenta")
+                else:
+                    print("Optiune inexistenta")
         except Exception as error:
             print(f"Eroare: {error}")
