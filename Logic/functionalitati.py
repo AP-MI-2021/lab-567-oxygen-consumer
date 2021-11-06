@@ -1,5 +1,6 @@
 from Domain.cheltuiala import *
 from Logic.CRUD import *
+from datetime import date
 
 
 def stergere_cheltuieli(nr_apartament, lista):
@@ -54,3 +55,23 @@ def ordonare_descrescatoare(lista):
     """
     lista.sort(reverse=True, key=lambda cheltuiala: get_suma(cheltuiala))
     return lista
+
+
+def sume_lunare(lista):
+    """
+    Returneaza un dictionar de dictionare cu sumele lunare per apartament.
+    """
+    sume = {}
+    for cheltuiala in lista:
+        luna = get_data(cheltuiala).strftime("%m %Y")
+        apartament = get_nr_aparament(cheltuiala)
+
+        if luna not in sume:
+            sume[luna] = {}
+
+        if apartament in sume[luna]:
+            sume[luna][apartament] += get_suma(cheltuiala)
+        else:
+            sume[luna][apartament] = get_suma(cheltuiala)
+
+    return sume

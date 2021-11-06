@@ -74,6 +74,14 @@ def ui_ordonare_descrescatoare(lista):
     return lista
 
 
+def ui_sume_lunare(lista):
+    sume = sume_lunare(lista)
+    for luna in sume:
+        print(luna + ":")
+        for apartament in sume[luna]:
+            print("- " + str(apartament) + ": " + str(sume[luna][apartament]))
+
+
 def print_usage():
     usage = """
 a. Afisare lista cheltuieli
@@ -88,6 +96,7 @@ x. Iesire
 5. Adunarea unei valori la toate cheltuielile dintr-o anumita data
 6. Determina cheltuielile de suma maxima pt fiecare tip de cheltuiala
 7. Ordoneaza descrescator cheltuielile in functie de suma
+8. Afisare sume lunare per apartament
     """
     print(usage)
 
@@ -133,6 +142,8 @@ def run_menu(lista):
         elif optiune == "7":
             liste_anterioare.append(lista)
             ui_ordonare_descrescatoare(lista)
+        elif optiune == "8":
+            ui_sume_lunare(lista)
 
         else:
             print("Optiune inexistenta!")
