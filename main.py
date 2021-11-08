@@ -7,8 +7,8 @@ def main():
     run_all_tests()
 
     lista = []
-    ui = input("Introduceti cli pt cli sau ui pt ui: ")
     while True:
+        ui = input("Introduceti cli pt cli (incomplet) sau ui pt ui: ")
         if ui == "ui":
             run_menu(lista)
             break
