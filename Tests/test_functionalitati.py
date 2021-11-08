@@ -13,24 +13,24 @@ lista_default = [
 
 def test_stergere_cheltuieli():
     lista = lista_default
-    lista = stergere_cheltuieli(22, lista)
+    lista = stergere_cheltuieli(22, lista, [], [])
     assert len(lista) == 1
     assert get_by_id(1, lista) is None
     assert get_by_id(3, lista) is None
     assert get_by_id(4, lista) is None
 
     lista = lista_default
-    lista = stergere_cheltuieli(13, lista)
+    lista = stergere_cheltuieli(13, lista, [], [])
     assert len(lista) == 4
 
-    lista = stergere_cheltuieli(12, lista)
+    lista = stergere_cheltuieli(12, lista, [], [])
     assert len(lista) == 3
     assert get_by_id(2, lista) is None
 
 
 def test_adauga_valoare_la_cheltuieli():
     lista = lista_default
-    lista = adauga_valoare_la_cheltuieli("25.06.2021", 10, lista)
+    lista = adauga_valoare_la_cheltuieli("25.06.2021", 10, lista, [], [])
     assert len(lista) == 4
     assert get_suma(lista[0]) == 155
     assert get_suma(lista[1]) == 358
@@ -47,7 +47,7 @@ def test_cea_mai_mare_cheltuiala():
 
 def test_ordonare_descrescatoare():
     lista = lista_default
-    lista = ordonare_descrescatoare(lista)
+    lista = ordonare_descrescatoare(lista, [], [])
     assert len(lista) == 4
     assert get_suma(lista[0]) == 348
     assert get_suma(lista[-1]) == 145

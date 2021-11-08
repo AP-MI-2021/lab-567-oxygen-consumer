@@ -3,25 +3,33 @@ from Logic.CRUD import *
 from datetime import date
 
 
-def stergere_cheltuieli(nr_apartament, lista):
+def stergere_cheltuieli(nr_apartament, lista, liste_undo, liste_redo):
     """
     Sterge toate cheltuielile asociate unui apartament din lista.
     """
+    modificat = False
+    liste_undo.append(lista)
     for cheltuiala in lista:
         if get_nr_aparament(cheltuiala) == nr_apartament:
-            lista = stergere_cheltuiala(get_id(cheltuiala), lista)
+            lista = stergere_cheltuiala(get_id(cheltuiala), lista, [], [])
+            modificat = True
+    if modificat:
+        liste_redo.clear()
+    else:
+        liste_undo.pop()
     return lista
 
 
-def adauga_valoare_la_cheltuieli(data, suma, lista):
+def adauga_valoare_la_cheltuieli(data, suma, lista, liste_undo, liste_redo):
     """
     Adauga o valoare la toate cheltuielile dintr-o anumita data.
     """
-
     data = str_to_date(data)
-
+    modificat = False
+    liste_undo.append(lista)
     for cheltuiala in lista:
         if get_data(cheltuiala) == data:
+            modificat = True
             lista = modificare_cheltuiala(
                 get_id(cheltuiala),
                 get_nr_aparament(cheltuiala),
@@ -29,7 +37,13 @@ def adauga_valoare_la_cheltuieli(data, suma, lista):
                 get_data(cheltuiala),
                 get_tip(cheltuiala),
                 lista,
+                [],
+                [],
             )
+    if modificat:
+        liste_redo.clear()
+    else:
+        liste_undo.pop()
     return lista
 
 
@@ -49,10 +63,12 @@ def cea_mai_mare_cheltuiala(tip, lista):
     return cheltuiala_max
 
 
-def ordonare_descrescatoare(lista):
+def ordonare_descrescatoare(lista, liste_undo, liste_redo):
     """
     Ordoneaza cheltuielile in ordine descrescatoare dupa suma.
     """
+    liste_undo.append(lista)
+    liste_redo.clear()
     lista.sort(reverse=True, key=lambda cheltuiala: get_suma(cheltuiala))
     return lista
 

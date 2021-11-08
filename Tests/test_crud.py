@@ -18,7 +18,7 @@ def test_get_by_id():
 
 def test_adaugare_cheltuiala():
     lista = []
-    lista = adaugare_cheltuiala(lista_default[0], lista)
+    lista = adaugare_cheltuiala(lista_default[0], lista, [], [])
     assert len(lista) == 1
     assert get_suma(lista[0]) == 145
     assert get_data(lista[0]) == date(2021, 6, 25)
@@ -28,7 +28,7 @@ def test_adaugare_cheltuiala():
 
 def test_stergere_cheltuiala():
     lista = lista_default
-    lista = stergere_cheltuiala(2, lista)
+    lista = stergere_cheltuiala(2, lista, [], [])
     assert len(lista) == 1
     assert get_by_id(1, lista) is not None
     assert get_by_id(2, lista) is None
@@ -36,13 +36,31 @@ def test_stergere_cheltuiala():
 
 def test_modificare_cheltuiala():
     lista = []
-    lista = adaugare_cheltuiala(lista[0], lista)
-    modificare_cheltuiala(1, 40, 120, "10.09.2018", "alte cheltuieli", lista)
+    lista = adaugare_cheltuiala(lista[0], lista, [], [])
+    modificare_cheltuiala(1, 40, 120, "10.09.2018", "alte cheltuieli", lista, [], [])
     assert len(lista) == 1
     assert lista[0] == creeaza_cheltuiala(30, 120, "10.09.2018", "alte cheltuieli", 1)
+
+
+def test_undo_redo():
+    lista = [lista_default[0]]
+    liste_undo = []
+    liste_redo = []
+    lista = undo(lista, liste_undo, liste_redo)
+    assert lista == [lista_default[0]]
+    lista = redo(lista, liste_undo, liste_redo)
+    assert lista == [lista_default[0]]
+    lista = adaugare_cheltuiala(lista_default[1], lista, liste_undo, liste_redo)
+    print(liste_undo)
+    assert len(liste_undo) == 1
+    lista = undo(lista, liste_undo, liste_redo)
+    assert len(liste_redo) == 1
+    lista = adaugare_cheltuiala(lista_default[1], lista, liste_undo, liste_redo)
+    assert len(liste_redo) == 0
 
 
 def test_crud():
     test_get_by_id()
     test_adaugare_cheltuiala()
     test_stergere_cheltuiala()
+    test_undo_redo()
