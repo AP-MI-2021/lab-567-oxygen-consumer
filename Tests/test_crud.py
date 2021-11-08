@@ -51,7 +51,6 @@ def test_undo_redo():
     lista = redo(lista, liste_undo, liste_redo)
     assert lista == [lista_default[0]]
     lista = adaugare_cheltuiala(lista_default[1], lista, liste_undo, liste_redo)
-    print(liste_undo)
     assert len(liste_undo) == 1
     lista = undo(lista, liste_undo, liste_redo)
     assert len(liste_redo) == 1

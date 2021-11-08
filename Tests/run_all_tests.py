@@ -5,5 +5,5 @@ from Tests.test_functionalitati import test_functionalitati
 
 def run_all_tests():
     test_cheltuiala()
-    # test_crud()
+    test_crud()
     test_functionalitati()
