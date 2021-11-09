@@ -42,24 +42,7 @@ def test_modificare_cheltuiala():
     assert lista[0] == creeaza_cheltuiala(30, 120, "10.09.2018", "alte cheltuieli", 1)
 
 
-def test_undo_redo():
-    lista = [lista_default[0]]
-    liste_undo = []
-    liste_redo = []
-    lista = undo(lista, liste_undo, liste_redo)
-    assert lista == [lista_default[0]]
-    lista = redo(lista, liste_undo, liste_redo)
-    assert lista == [lista_default[0]]
-    lista = adaugare_cheltuiala(lista_default[1], lista, liste_undo, liste_redo)
-    assert len(liste_undo) == 1
-    lista = undo(lista, liste_undo, liste_redo)
-    assert len(liste_redo) == 1
-    lista = adaugare_cheltuiala(lista_default[1], lista, liste_undo, liste_redo)
-    assert len(liste_redo) == 0
-
-
 def test_crud():
     test_get_by_id()
     test_adaugare_cheltuiala()
     test_stergere_cheltuiala()
-    test_undo_redo()
